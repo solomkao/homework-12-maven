@@ -1,35 +1,52 @@
+/*
+ * @author Oksana Solomka
+ * @version 1.0
+ */
 package com.solomka;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
+public final class Main {
+    private Main() {
+    }
+
+    /**
+     * @param args empty args
+     */
+    public static void main(final String[] args) {
         File lyricsFile = new File("src/main/resources/data.txt");
         List<String> list = FileAccess.readFile(lyricsFile);
-        //Task #1 Підрахунок загальної кількості слів в тексті
-        System.out.printf("The number of words in text file: %s%n",list.size());
+        //Task #1
+        System.out.printf("The number of words in text file: %s%n",
+                list.size());
         System.out.println("Words from file " + list);
 
-        //Task #2 Виключити нецензурні слова && слова, довжина яких менше 3 символів
-        int numberOfLetters = 3;
+        //Task #2
+        final int numberOfLetters = 3;
         File swearWordsFile = new File("src/main/resources/swear-words.txt");
-        List<String>alteredList = StringUtil.excludeSwearAndNlengthWords(list,swearWordsFile,numberOfLetters);
-        System.out.println("Bunch of words, except swear words and <"+numberOfLetters+"-letters words " + alteredList);
-        System.out.printf("The number of words in the list: %s%n",alteredList.size());
+        List<String> alteredList = StringUtil.
+                excludeSwearAndNLengthWords(list,
+                        swearWordsFile,
+                        numberOfLetters);
+        System.out.println("Bunch of words, except swear words and <"
+                + numberOfLetters + "-letters words " + alteredList);
+        System.out.printf("The number of words in the list: %s%n",
+                alteredList.size());
 
-        //Task #3 Підрахувати кількість слів, які необхідно виключити та записати їх в окремий масив
-        System.out.printf("%d words were excluded from list.%n", (list.size() - alteredList.size()));
-        String[]array = StringUtil.excludedWords(list,swearWordsFile,numberOfLetters);
+        //Task #3
+        System.out.printf("%d words were excluded from list.%n",
+                (list.size() - alteredList.size()));
+        String[] array = StringUtil
+                .excludedWords(list, swearWordsFile, numberOfLetters);
         System.out.println("Excluded words " + Arrays.toString(array));
 
-        //Task #4 Вивести N слів, які зустрічаються найчастіше
-        int number = 5;
-        List<String> highFrequencyWords = StringUtil.highFrequencyWords(alteredList,number);
+        //Task #4
+        final int numberOfHighFrequencyWords = 5;
+        List<String> highFrequencyWords = StringUtil
+                .highFrequencyWords(alteredList, numberOfHighFrequencyWords);
         System.out.println("High frequency words " + highFrequencyWords);
-
-
     }
 
 

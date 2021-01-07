@@ -1,6 +1,8 @@
+/*
+ * @author Oksana Solomka
+ * @version 1.0
+ */
 package com.solomka;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +17,11 @@ public final class FileAccess {
     private FileAccess() {
     }
 
-    @NotNull
+    /**
+     *
+     * @param file the file to read
+     * @return list of Strings from file
+     */
     public static List<String> readFile(final File file) {
         final List<String> words = new ArrayList<>();
         try (Scanner scanner = new Scanner(new FileReader(file))) {

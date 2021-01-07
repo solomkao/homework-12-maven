@@ -1,9 +1,10 @@
+package com.solomka;
+
 import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class StringUtil {
+public final class StringUtil {
     public static List<String> excludeSwearAndNlengthWords(List<String> words, File file, int n) {
         List<String> resultList = excludeSwearWords(words, file);
         return excludeNlengthWords(resultList, n);
